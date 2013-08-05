@@ -1,0 +1,64 @@
+drop table user;
+
+CREATE TABLE user (
+	user_id int not null auto_increment primary key,
+	name varchar(16) not null,
+	email varchar(64) not null,
+	password varchar(62) not null
+	);
+	
+insert into user(name, email, password) values ('test', 'test', md5('test'));
+
+drop table payee;
+
+CREATE TABLE payee (
+	payee_id int not null auto_increment primary key,
+	user_id int,
+	name varchar(16) not null,
+	phone varchar(16),
+	account varchar(32)
+	);
+
+insert into payee
+(user_id, name, phone, account)
+values
+('1', 'Chase', '702-217-1850', '8293DFLKD234');
+
+insert into payee
+(user_id, name, phone, account)
+values
+('1', 'Wells Fargo', '702-217-1850', '8293DFLKD234');
+
+
+drop table entry;
+
+CREATE TABLE entry (
+	entry_id int not null auto_increment primary key,
+	payee_id int not null,
+	amount varchar(16) not null,
+	date datetime not null,
+	notes varchar(255)
+);
+
+insert into entry (payee_id, amount, date, notes) values (1, '10.00', '2013-06-21', 'testing one');
+insert into entry (payee_id, amount, date, notes) values (1, '15.00', '2013-05-05', 'testing two');
+insert into entry (payee_id, amount, date, notes) values (2, '12.00', '2013-06-21', 'testing three');
+
+
+ALTER TABLE payee ADD notify_on tinyint default 0;
+ALTER TABLE payee ADD notify_day tinyint default 1;
+ALTER TABLE payee ADD notes varchar(255);
+ALTER TABLE payee ADD url varchar(255);
+
+CREATE TABLE notify_log (
+    notify_log_id int not null auto_increment primary key,
+    payee_id int not null,
+    date datetime not null,
+    message_url varchar(256) not null
+);
+
+CREATE TABLE comment (
+    comment_id int not null auto_increment primary key,
+    email varchar(32) not null,
+    comments varchar(256) not null
+);

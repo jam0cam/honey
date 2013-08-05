@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="entry">
+
+    <resultMap id="entryMap" class="com.finance.model.EntryCommand">
+        <result property="id" column="entry_id"/>
+        <result property="amount" column="amount"/>
+        <result property="date" column="date"/>
+        <result property="notes" column="notes"/>
+        <result property="payee" column="payee_id" select="payee.getPayeeById" />
+    </resultMap>
+
+
+    <insert id="insertEntry" parameterClass="com.finance.model.EntryCommand">
+        insert into entry
+        (payee_id, amount, date, notes)
+        values
+        (#selectedPayeeId#, #amount#, #date#, #notes#)
+        <selectKey resultClass="java.lang.String" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+    
+    <update id="updateEntry"  parameterClass="com.finance.model.EntryCommand">
+        update entry
+        set
+          amount = #amount#,
+          date = #date#,
+          notes = #notes#
+        where entry_id = #id#
+    </update>
+
+    <select id="getEntriesByUserId" parameterClass="String" resultMap="entryMap">
+        select e.*
+        from entry e
+        join payee p on p.payee_id = e.payee_id
+        where user_id = #id#
+        order by e.payee_id asc, e.date desc
+    </select>
+
+    <select id="getEntriesByUserIdSortByDate" parameterClass="String" resultMap="entryMap">
+        select e.*
+        from entry e
+        join payee p on p.payee_id = e.payee_id
+        where user_id = #id#
+        order by e.date asc
+    </select>
+
+    <select id="getEntryById" parameterClass="String" resultMap="entryMap">
+        select *
+        from entry
+        where entry_id = #id#
+    </select>
+
+    <delete id="deleteEntry" parameterClass="String" >
+        delete
+        from entry
+        where entry_id = #id#
+    </delete>
+</sqlMap>

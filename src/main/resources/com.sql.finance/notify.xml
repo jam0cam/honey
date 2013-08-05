@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="notify">
+
+
+    <resultMap id="notifyLogMap" class="com.finance.model.NotifyLog">
+        <result property="payeeId" column="payee_id" />
+        <result property="id" column="notify_log_id" />
+        <result property="date" column="date" />
+        <result property="messageUrl" column="message_url" />
+    </resultMap>
+
+    <select id="getNotificationsByPayeeId" parameterClass="String" resultMap="notify.notifyLogMap" >
+        select *
+        from notify_log
+        where payee_id = #id#
+    </select>
+
+    <select id="getRecentNotification" parameterClass="String" resultMap="notify.notifyLogMap" >
+        select *
+        from notify_log
+        where payee_id = #id#
+        order by date desc limit 1
+    </select>
+
+    <insert id="insertLog" parameterClass="com.finance.model.NotifyLog">
+        insert into
+        notify_log
+        (payee_id, date, message_url)
+        values
+        (#payeeId#, now(), #messageUrl#)
+        <selectKey resultClass="java.lang.String" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+
+
+</sqlMap>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="sql">
+
+    <resultMap id="userMap" class="com.common.User">
+        <result property="name" column="name" />
+        <result property="id" column="user_id" />
+        <result property="email" column="email" />
+        <result property="password" column="password" />
+    </resultMap>
+
+    <resultMap id="notifyLogMap" class="com.finance.model.NotifyLog">
+        <result property="payeeId" column="payee_id" />
+        <result property="id" column="id" />
+        <result property="date" column="date" />
+        <result property="messageUrl" column="message_url" />
+    </resultMap>
+
+    <select id="getById" parameterClass="java.lang.String" resultMap="sql.userMap">
+        select * from user where user_id = #id#
+    </select>
+
+    <select id="getByEmail" parameterClass="java.lang.String" resultMap="sql.userMap">
+        select * from user where email = #email#
+    </select>
+
+    <select id="getByEmailAndPassword" parameterClass="java.util.Map" resultMap="sql.userMap">
+        select * from user where email = #email# and password = md5(#password#)
+    </select>
+
+    <insert id="insertRegistration" parameterClass="com.common.User">
+        insert into user
+        (name, email, password)
+        values
+        (#name#, #email#, md5(#password#))
+        <selectKey resultClass="java.lang.String"  keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <insert id="insertComments" parameterClass="com.common.About">
+        insert into comment
+        (email, comments)
+        values
+        (#email#, #comments#)
+    </insert>
+
+    <update id="updatePassword" parameterClass="com.common.User" >
+        update user
+        set password = md5(#password#)
+        where user_id = #id#
+    </update>
+
+
+    <select id="getNotificationsByPayeeId" parameterClass="String" resultMap="sql.notifyLogMap" >
+        select *
+        from notify_log
+        where payee_id = #id#
+    </select>
+</sqlMap>

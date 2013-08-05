@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="pingPong">
+
+    <resultMap id="playerMap" class="com.pingpong.Player">
+        <result property="name" column="name" />
+        <result property="id" column="player_id" />
+    </resultMap>
+
+    <resultMap id="gameMap" class="com.pingpong.Game">
+        <result property="id" column="game_id" />
+        <result property="player1" column="player_one_id" select="pingPong.getPlayerById" />
+        <result property="player2" column="player_two_id" select="pingPong.getPlayerById" />
+        <result property="player1Score" column="player_one_score" />
+        <result property="player2Score" column="player_two_score" />
+        <result property="date" column="date" />
+    </resultMap>
+
+    <select id="getAllGames" resultMap="pingPong.gameMap">
+        select * from game order by game_id desc;
+    </select>
+
+    <select id="getAllPlayers" resultMap="pingPong.playerMap">
+        select * from player;
+    </select>
+
+    <select id="getPlayerById" parameterClass="String" resultMap="pingPong.playerMap">
+        select * from player
+        where player_id = #id#
+    </select>
+
+    <insert id="insertGame" parameterClass="com.pingpong.Game">
+        insert into game
+        (player_one_id, player_two_id, player_one_score, player_two_score, date)
+        values
+        (#player1.id#, #player2.id#, #player1Score#, #player2Score#, #date#);
+    </insert>
+</sqlMap>

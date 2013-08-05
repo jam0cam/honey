@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="payee">
+
+
+    <resultMap id="payeeMap" class="com.finance.model.Payee">
+        <result property="name" column="name" />
+        <result property="id" column="payee_id" />
+        <result property="phone" column="phone" />
+        <result property="accountNumber" column="account" />
+        <result property="userId" column="user_id" />
+        <result property="notifyOn" column="notify_on" />
+        <result property="notifyDay" column="notify_day" />
+        <result property="notes" column="notes" />
+        <result property="url" column="url" />
+    </resultMap>
+
+    <select id="getPayeeByName" parameterClass="java.util.Map" resultMap="payee.payeeMap">
+        select * from payee where name = #name# and user_id = #userId#
+    </select>
+
+    <select id="getPayeeById" parameterClass="java.lang.String" resultMap="payee.payeeMap">
+        select * from payee where payee_id = #id#
+    </select>
+
+    <select id="getPayeeByAccount" parameterClass="java.lang.String" resultMap="payee.payeeMap">
+        select * from payee where account = #account#
+    </select>
+
+    <select id="getAllPayees" parameterClass="java.lang.String"  resultMap="payee.payeeMap">
+        select * from payee where user_id = #userId# order by name asc
+    </select>
+
+    <select id="getAllPayeesNotifyOn" parameterClass="java.lang.String"  resultMap="payee.payeeMap">
+        select * from payee
+        where notify_on = 1
+    </select>
+
+    <insert id="insertPayee" parameterClass="com.finance.model.Payee">
+        insert into payee
+        (name, account, phone,user_id, notify_on, notify_day, notes, url)
+        values
+        (#name#, #accountNumber#, #phone#, #userId#, #notifyOn#, #notifyDay#, #notes#, #url#)
+        <selectKey resultClass="java.lang.String"  keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterClass="com.finance.model.Payee">
+        update
+          payee
+        set
+          name = #name#,
+          account = #accountNumber#,
+          phone = #phone#,
+          notify_on = #notifyOn#,
+          notify_day = #notifyDay#,
+          notes = #notes#,
+          url = #url#
+        where payee_id = #id#
+    </update>
+
+    <delete id="deletePayee" parameterClass="String" >
+        delete
+        from payee
+        where payee_id = #id#
+    </delete>
+
+</sqlMap>

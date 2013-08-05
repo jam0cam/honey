@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns:bean="http://www.springframework.org/schema/beans"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://www.springframework.org/schema/security"
+            xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                http://www.springframework.org/schema/security
+                http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    <http auto-config="true" path-type="regex">
+        <intercept-url pattern="/.*(e|E)ntry.*" access="ROLE_USER"/>
+        <intercept-url pattern="/.*(a|A)ccount.*" access="ROLE_USER"/>
+        <intercept-url pattern="/.*(p|P)ayee.*" access="ROLE_USER"/>
+        <intercept-url pattern="/.*(h|H)istory.*" access="ROLE_USER"/>
+        <intercept-url pattern="/.*(m|M)anage.*" access="ROLE_USER"/>
+        <intercept-url pattern="/.*(n|N)otify.*" access="ROLE_USER"/>
+        <intercept-url pattern="/.*finance/stats.*" access="ROLE_USER"/>
+        <intercept-url pattern="/.*mailer.*" access="ROLE_USER"/>
+        <intercept-url pattern="/.*home.*" access="ROLE_USER"/>
+        <intercept-url pattern="/.*coupon.*" access="ROLE_USER"/>
+        <intercept-url pattern="/.*tt/newGame.*" access="ROLE_USER"/>
+
+        <form-login login-page="/"
+                    login-processing-url="/login"
+                    username-parameter="email"
+                    password-parameter="password"
+                    authentication-failure-url="/failedLogin?error"
+                    default-target-url="/home"/>
+        <logout logout-url="/logout"
+                logout-success-url="/logoutSuccess"/>
+    </http>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="myAuthenticationProvider"/>
+    </authentication-manager>
+
+    <bean:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+</bean:beans>
