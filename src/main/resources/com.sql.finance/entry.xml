@@ -38,7 +38,7 @@
         from entry e
         join payee p on p.payee_id = e.payee_id
         where user_id = #id#
-        order by e.payee_id asc, e.date desc
+        order by p.name asc, e.date desc
     </select>
 
     <select id="getEntriesByUserIdSortByDate" parameterClass="String" resultMap="entryMap">
