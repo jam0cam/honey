@@ -29,6 +29,24 @@ public class TaiChiController {
         return new ModelAndView("taichi/nineAspects");
     }
 
+    @RequestMapping(value="/lectures",method = RequestMethod.GET)
+    public @ResponseBody
+    ModelAndView lectures () {
+        return new ModelAndView("taichi/lectures");
+    }
+
+    @RequestMapping(value="/health",method = RequestMethod.GET)
+    public @ResponseBody
+    ModelAndView health () {
+        return new ModelAndView("taichi/health");
+    }
+
+    @RequestMapping(value="/forms",method = RequestMethod.GET)
+    public @ResponseBody
+    ModelAndView forms () {
+        return new ModelAndView("taichi/forms");
+    }
+
     @RequestMapping(value="/eightPrinciples",method = RequestMethod.GET)
     public @ResponseBody
     ModelAndView eightPrinciples () {

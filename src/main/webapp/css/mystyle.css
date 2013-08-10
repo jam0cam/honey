@@ -4,6 +4,13 @@ body {
 
 }
 
+span.tab{
+    padding: 0 40px; /* Or desired space*/
+}
+span.tab2{
+    padding: 0 80px; /* Or desired space*/
+}
+
 a:link {text-decoration:none;}
 
 .form-account{
