@@ -46,7 +46,7 @@
         from entry e
         join payee p on p.payee_id = e.payee_id
         where user_id = #id#
-        order by e.date asc
+        order by e.date asc, p.name asc
     </select>
 
     <select id="getEntryById" parameterClass="String" resultMap="entryMap">

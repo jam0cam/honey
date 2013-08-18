@@ -46,12 +46,12 @@
         </tr>
         <tr>
             <td>1</td>
-            <td>Tai Chi Preparation</td>
+            <td>Tai Chi Preparation<br>預備式</td>
             <td>1</td><td>4</td><td>4</td>
         </tr>
         <tr>
             <td>2</td>
-            <td>Starting Tai Chi</td>
+            <td>Starting Tai Chi<br>太極起式</td>
             <td>1</td><td>6</td><td>10</td>
         </tr>
         <tr>
@@ -76,32 +76,32 @@
         </tr>
         <tr>
             <td>7</td>
-            <td>Left Forward Step</td>
+            <td>Left Forward Step<br>左摟膝抝步</td>
             <td>1</td><td>5</td><td>33</td>
         </tr>
         <tr>
             <td>8</td>
-            <td>Right Forward Step</td>
+            <td>Right Forward Step<br>右摟膝抝步</td>
             <td>1</td><td>3</td><td>36</td>
         </tr>
         <tr>
             <td>9</td>
-            <td>Left Forward Step</td>
+            <td>Left Forward Step<br>左摟膝抝步</td>
             <td>1</td><td>3</td><td>39</td>
         </tr>
         <tr>
             <td>10</td>
-            <td>Hand Playing the Lute</td>
+            <td>Hand Playing the Lute<br>手揮琵琶</td>
             <td>1</td><td>4</td><td>43</td>
         </tr>
         <tr>
             <td>11</td>
-            <td>Forward Block Punch</td>
+            <td>Forward Block Punch<br>搬瓓捶</td>
             <td>1</td><td>4</td><td>47</td>
         </tr>
         <tr>
             <td>12</td>
-            <td>Retreating Forward Push</td>
+            <td>Retreating Forward Push<br>如封似閉</td>
             <td>1</td><td>6</td><td>53</td>
         </tr>
 
@@ -126,7 +126,7 @@
         </tr>
         <tr>
             <td>15</td>
-            <td>Grasping Bird's Tail<br>攬雀尾</td>
+            <td>Grasping Bird's Tail<br>攬雀尾(斜)</td>
             <td>1</td><td>8</td><td>71</td>
         </tr>
         <tr>
@@ -136,27 +136,27 @@
         </tr>
         <tr>
             <td>17</td>
-            <td>Forming Fist Under Elbow</td>
+            <td>Forming Fist Under Elbow<br>肘底看捶</td>
             <td>1</td><td>3</td><td>75</td>
         </tr>
         <tr>
             <td>18</td>
-            <td>Reversed Right Forward Step</td>
+            <td>Reversed Right Forward Step<br>左倒攆猴</td>
             <td>1</td><td>2</td><td>77</td>
         </tr>
         <tr>
             <td>19</td>
-            <td>Reversed Left Forward Step</td>
+            <td>Reversed Left Forward Step<br>右倒攆猴</td>
             <td>1</td><td>2</td><td>79</td>
         </tr>
         <tr>
             <td>20</td>
-            <td>Reversed Right Forward Step</td>
+            <td>Reversed Right Forward Step<br>左倒攆猴</td>
             <td></td><td>2</td><td>81</td>
         </tr>
         <tr>
             <td>21</td>
-            <td>Oblique Arm Glide</td>
+            <td>Oblique Arm Glide<br>斜飛勢</td>
             <td>1</td><td>3</td><td>84</td>
         </tr>
         <tr>
@@ -171,7 +171,7 @@
         </tr>
         <tr>
             <td>24</td>
-            <td>Left Forward Step</td>
+            <td>Left Forward Step<br>摟膝抝步(左)</td>
             <td></td><td>3</td><td>95</td>
         </tr>
         <tr>
@@ -186,12 +186,12 @@
         </tr>
         <tr>
             <td>27</td>
-            <td>Turning Over Punch</td>
+            <td>Turning Over Punch<br>撇身捶</td>
             <td>1</td><td>2</td><td>103</td>
         </tr>
         <tr>
             <td>28</td>
-            <td>Retreating Block Punch</td>
+            <td>Retreating Block Punch<br>退步搬瓓捶</td>
             <td>1</td><td>4</td><td>107</td>
         </tr>
         <tr>
@@ -241,97 +241,97 @@
         </tr>
         <tr>
             <td>35</td>
-            <td>Left Side Block</td>
+            <td>Left Side Block<br>左高探馬</td>
             <td>1</td><td>2</td><td>129</td>
         </tr>
         <tr>
             <td>36</td>
-            <td>Right Split Kick</td>
+            <td>Right Split Kick<br>左右分腳(右)</td>
             <td>1</td><td>2</td><td>131</td>
         </tr>
         <tr>
             <td>37</td>
-            <td>Right Side Block</td>
+            <td>Right Side Block<br>右高探馬</td>
             <td>1</td><td>1</td><td>132</td>
         </tr>
         <tr>
             <td>38</td>
-            <td>Left Split Kick</td>
+            <td>Left Split Kick<br>左右分腳(左)</td>
             <td>1</td><td>2</td><td>134</td>
         </tr>
         <tr>
             <td>39</td>
-            <td>Turning Left Push Kick</td>
+            <td>Turning Left Push Kick<br>轉身蹬腳</td>
             <td>1</td><td>3</td><td>137</td>
         </tr>
         <tr>
             <td>40</td>
-            <td>Left Forward Step</td>
+            <td>Left Forward Step<br>左摟膝抝步</td>
             <td>1</td><td>1</td><td>138</td>
         </tr>
         <tr>
             <td>41</td>
-            <td>Right Forward Step</td>
+            <td>Right Forward Step<br>右摟膝抝步</td>
             <td></td><td>3</td><td>141</td>
         </tr>
         <tr>
             <td>42</td>
-            <td>Advancing Downward Punch</td>
+            <td>Advancing Downward Punch<br>進步載捶</td>
             <td>1</td><td>3</td><td>144</td>
         </tr>
         <tr>
             <td>43</td>
-            <td>Turn-Around Over Punch</td>
+            <td>Turn-Around Over Punch<br>翻身撇身捶</td>
             <td>1</td><td>2</td><td>146</td>
         </tr>
         <tr>
             <td>44</td>
-            <td>Step-Up Left Side Block</td>
+            <td>Step-Up Left Side Block<br>上步高探馬(左)</td>
             <td>1</td><td>1</td><td>147</td>
         </tr>
         <tr>
             <td>45</td>
-            <td>Right Split Kick</td>
+            <td>Right Split Kick<br>披身踢腳</td>
             <td></td><td>2</td><td>149</td>
         </tr>
         <tr>
             <td>46</td>
-            <td>Retreating Tiger Punch</td>
+            <td>Retreating Tiger Punch<br>退步打虎</td>
             <td>1</td><td>4</td><td>153</td>
         </tr>
         <tr>
             <td>47</td>
-            <td>Right Side Kick</td>
+            <td>Right Side Kick<br>二起腳</td>
             <td>1</td><td>1</td><td>154</td>
         </tr>
         <tr>
             <td>48</td>
-            <td>Double Fist Ear Punch</td>
+            <td>Double Fist Ear Punch<br>雙峯貫耳</td>
             <td>1</td><td>2</td><td>156</td>
         </tr>
         <tr>
             <td>49</td>
-            <td>Left Pivot Split Kick</td>
+            <td>Left Pivot Split Kick<br>翻身二起腳之一</td>
             <td>1</td><td>2</td><td>158</td>
         </tr>
         <tr>
             <td>50</td>
-            <td>Right Pivot Split Kick</td>
+            <td>Right Pivot Split Kick<br>翻身二起腳之二</td>
             <td>1</td><td>4</td><td>162</td>
         </tr>
         <tr>
             <td>51</td>
-            <td>Over Punch</td>
+            <td>Over Punch<br>撇身捶</td>
             <td>1</td><td>1</td><td>163</td>
         </tr>
         <tr>
             <td>52</td>
-            <td>Advancing Block Punch</td>
+            <td>Advancing Block Punch<br>上步搬瓓捶</td>
             <td>1</td><td>4</td><td>167</td>
         </tr>
         <tr>
             <td>53</td>
-            <td>Retreating Forward Push</td>
+            <td>Retreating Forward Push<br>如封似閉</td>
             <td></td><td>6</td><td>173</td>
         </tr>
         <tr>
@@ -347,7 +347,7 @@
         </tr>
         <tr>
             <td>56</td>
-            <td>Grasping Bird's Tail<br>攬雀尾</td>
+            <td>Grasping Bird's Tail<br>攬雀尾(斜)</td>
             <td></td><td>8</td><td>191</td>
         </tr>
         <tr>
@@ -408,7 +408,7 @@
         </tr>
         <tr>
             <td>65</td>
-            <td>Grasping Bird's Tail Forward<br>上步攬雀尾</td>
+            <td>Grasping Bird's Tail<br>攬雀尾</td>
             <td></td><td>8</td><td>243</td>
         </tr>
         <tr>
@@ -453,22 +453,22 @@
         </tr>
         <tr>
             <td>74</td>
-            <td>Reversed Right Forward Step</td>
+            <td>Reversed Right Forward Step<br>左倒攆猴</td>
             <td></td><td>1</td><td>262</td>
         </tr>
         <tr>
             <td>75</td>
-            <td>Reversed Left Forward Step</td>
+            <td>Reversed Left Forward Step<br>右倒攆猴</td>
             <td></td><td>2</td><td>264</td>
         </tr>
         <tr>
             <td>76</td>
-            <td>Reversed Right Forward Step</td>
+            <td>Reversed Right Forward Step<br>左倒攆猴</td>
             <td></td><td>2</td><td>266</td>
         </tr>
         <tr>
             <td>77</td>
-            <td>Oblique Arm Glide</td>
+            <td>Oblique Arm Glide<br>斜飛勢</td>
             <td></td><td>3</td><td>269</td>
         </tr>
         <tr>
@@ -483,7 +483,7 @@
         </tr>
         <tr>
             <td>80</td>
-            <td>Left Forward Step</td>
+            <td>Left Forward Step<br>摟膝抝步(左)</td>
             <td></td><td>3</td><td>280</td>
         </tr>
         <tr>
@@ -498,15 +498,14 @@
         </tr>
         <tr>
             <td>83</td>
-            <td>Turning Over Punch</td>
+            <td>Turning Over Punch<br>撇身捶</td>
             <td></td><td>2</td><td>288</td>
         </tr>
         <tr>
             <td>84</td>
-            <td>Advancing Block Punch</td>
+            <td>Advancing Block Punch<br>上步搬瓓捶</td>
             <td></td><td>4</td><td>292</td>
         </tr>
-
         <tr>
             <td>85</td>
             <td>Grasping Bird's Tail Forward<br>上步攬雀尾</td>
@@ -539,22 +538,22 @@
         </tr>
         <tr>
             <td>91</td>
-            <td>Face Palm Strike</td>
+            <td>Face Palm Strike<br>近面掌</td>
             <td>1</td><td>3</td><td>315</td>
         </tr>
         <tr>
             <td>92</td>
-            <td>Turn-Around Side Strike Kick</td>
+            <td>Turn-Around Side Strike Kick<br>轉身十字擺蓮</td>
             <td>1</td><td>2</td><td>317</td>
         </tr>
         <tr>
             <td>93</td>
-            <td>Right Forward Step</td>
+            <td>Right Forward Step<br>摟膝抝步(右)</td>
             <td>1</td><td>1</td><td>318</td>
         </tr>
         <tr>
             <td>94</td>
-            <td>Advancing Angled Punch</td>
+            <td>Advancing Angled Punch<br>摟膝指襠捶</td>
             <td>1</td><td>3</td><td>321</td>
         </tr>
         <tr>
@@ -584,32 +583,32 @@
         </tr>
         <tr>
             <td>100</td>
-            <td>Turn-Around Face Palm Strike</td>
+            <td>Turn-Around Face Palm Strike<br>轉身迎面掌</td>
             <td>1</td><td>4</td><td>338</td>
         </tr>
         <tr>
             <td>101</td>
-            <td>Turn-Around Double Side Strike Kick</td>
+            <td>Turn-Around Double Side Strike Kick<br>轉身雙擺蓮</td>
             <td>1</td><td>2</td><td>340</td>
         </tr>
         <tr>
             <td>102</td>
-            <td>Curved Double Tiger Punch</td>
+            <td>Curved Double Tiger Punch<br>彎弓射虎</td>
             <td>1</td><td>3</td><td>343</td>
         </tr>
         <tr>
             <td>103</td>
-            <td>Step-Up Face Palm Strike</td>
+            <td>Step-Up Face Palm Strike<br>上步迎面掌</td>
             <td>1</td><td>2</td><td>345</td>
         </tr>
         <tr>
             <td>104</td>
-            <td>Turn-Around Over Punch</td>
+            <td>Turn-Around Over Punch<br>翻身撇身捶</td>
             <td></td><td>2</td><td>347</td>
         </tr>
         <tr>
             <td>105</td>
-            <td>Step-Up Left Side Block</td>
+            <td>Step-Up Left Side Block<br>上步高探馬(左)</td>
             <td></td><td>1</td><td>348</td>
         </tr>
         <tr>

@@ -43,7 +43,7 @@ public class FinanceStatsController {
     @RequestMapping(value="expenseByPayee", method = RequestMethod.GET)
     public @ResponseBody
     PieData expenseByPayee () {
-        List<EntryCommand> entries = entryDao.getEntriesByUserIdSortByDate(myUserContext.getCurrentUser().getId());
+        List<EntryCommand> entries = entryDao.getEntriesByUserId(myUserContext.getCurrentUser().getId());
 
         List<List<Object>> pieData = new ArrayList<List<Object>>();
 
