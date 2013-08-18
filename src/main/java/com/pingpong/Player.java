@@ -1,11 +1,13 @@
 package com.pingpong;
 
+import java.io.Serializable;
+
 /**
  * User: jitse
  * Date: 7/23/13
  * Time: 9:51 PM
  */
-public class Player {
+public class Player implements Serializable {
     private String id;
     private String name;
 

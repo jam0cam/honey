@@ -1,5 +1,6 @@
 package com.finance.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ import java.util.Map;
  * Date: 6/18/13
  * Time: 4:40 PM
  */
-public class EntryCommand {
+public class EntryCommand implements Serializable {
 
     private Map<String, String> payees;
     private Payee payee;

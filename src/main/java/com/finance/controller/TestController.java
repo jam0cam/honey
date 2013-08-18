@@ -30,6 +30,13 @@ public class TestController {
         return new ModelAndView("test");
     }
 
+
+    @RequestMapping(value="/test", method = RequestMethod.GET)
+    public @ResponseBody
+    String test () {
+        return "Helo world";
+    }
+
     @RequestMapping(value="/data", method = RequestMethod.GET)
     public @ResponseBody
     GraphData getData () {

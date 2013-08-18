@@ -1,5 +1,6 @@
 package com.finance.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * Date: 6/18/13
  * Time: 12:33 PM
  */
-public class AccountCommand {
+public class AccountCommand implements Serializable {
 
     private String name;
     List<RowData> rowDatas = new ArrayList<RowData>();

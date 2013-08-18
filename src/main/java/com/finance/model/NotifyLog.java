@@ -1,5 +1,6 @@
 package com.finance.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  * Date: 7/13/13
  * Time: 2:01 PM
  */
-public class NotifyLog {
+public class NotifyLog implements Serializable {
 
     private String id;
     private String payeeId;

@@ -1,11 +1,13 @@
 package com.finance.model;
 
+import java.io.Serializable;
+
 /**
  * User: jitse
  * Date: 6/18/13
  * Time: 12:45 PM
  */
-public class RowData {
+public class RowData implements Serializable {
     private String id;
     private String name;
     private String month1;

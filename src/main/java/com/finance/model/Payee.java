@@ -1,11 +1,13 @@
 package com.finance.model;
 
+import java.io.Serializable;
+
 /**
  * User: jitse
  * Date: 6/18/13
  * Time: 1:23 PM
  */
-public class Payee {
+public class Payee implements Serializable {
 
     private String name;
     private String accountNumber;

@@ -1,5 +1,6 @@
 package com.pingpong;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  * Date: 7/23/13
  * Time: 9:52 PM
  */
-public class Game {
+public class Game implements Serializable {
 
     private String id;
     private Player player1;

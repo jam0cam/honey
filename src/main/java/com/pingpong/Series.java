@@ -1,5 +1,6 @@
 package com.pingpong;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * Date: 7/25/13
  * Time: 5:30 PM
  */
-public class Series {
+public class Series implements Serializable {
 
     private int minMonth = 11;  //11 is december
     private int maxMonth = 0;       //0 is january

@@ -1,5 +1,6 @@
 package com.finance.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * Date: 6/23/13
  * Time: 11:00 AM
  */
-public class HistoryCommand {
+public class HistoryCommand implements Serializable {
 
     private String name;
     private List<RowData> rowdata;

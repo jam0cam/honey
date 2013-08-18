@@ -4,14 +4,20 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  */
-@Component
+@Controller
+@RequestMapping("/service")
 public class Dao implements InitializingBean {
     private SqlMapClientTemplate sqlMapClientTemplate;
 
@@ -33,6 +39,17 @@ public class Dao implements InitializingBean {
 
     public User getByEmail(String email) {
         return (User) sqlMapClientTemplate.queryForObject("sql.getByEmail", email);
+    }
+
+
+    @RequestMapping(value= "/login", method= RequestMethod.POST)
+    public @ResponseBody
+    User login(@RequestBody User user) {
+        if (!StringUtils.hasText(user.getEmail()) || !StringUtils.hasText(user.getPassword())) {
+            return null;
+        } else {
+            return getByEmailAndPassword(user.getEmail(), user.getPassword());
+        }
     }
 
     public User getByEmailAndPassword(String email, String password) {
