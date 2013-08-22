@@ -19,7 +19,7 @@ import java.util.Map;
  * Time: 6:20 PM
  */
 @Controller
-@RequestMapping("/finance/service")
+@RequestMapping("/finance/service/payee")
 public class PayeeDao implements InitializingBean {
     private SqlMapClientTemplate sqlMapClientTemplate;
 
@@ -42,7 +42,7 @@ public class PayeeDao implements InitializingBean {
         return (Payee) sqlMapClientTemplate.queryForObject("payee.getPayeeByName", params);
     }
 
-    @RequestMapping(value= "/payee/getAllPayees/userId/{userId}", method= RequestMethod.GET)
+    @RequestMapping(value= "/getAllPayees/userId/{userId}", method= RequestMethod.GET)
     public @ResponseBody List<Payee> getAllPayees(@PathVariable("userId") String userId) {
         return (List<Payee>) sqlMapClientTemplate.queryForList("payee.getAllPayees", userId);
     }
@@ -51,7 +51,7 @@ public class PayeeDao implements InitializingBean {
         return (List<Payee>) sqlMapClientTemplate.queryForList("payee.getAllPayeesNotifyOn");
     }
 
-    @RequestMapping(value= "/payee/save", method= RequestMethod.POST)
+    @RequestMapping(value= "/save", method= RequestMethod.POST)
     public @ResponseBody
     String payeeSave(@RequestBody Payee command) {
         if (!StringUtils.hasText(command.getId())) {

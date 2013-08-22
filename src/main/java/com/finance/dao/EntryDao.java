@@ -1,11 +1,14 @@
 package com.finance.dao;
 
+import com.common.ResponseResult;
 import com.finance.model.EntryCommand;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,12 +17,23 @@ import java.util.List;
  * Date: 6/21/13
  * Time: 10:36 PM
  */
-@Component
+@Controller
+@RequestMapping("/finance/service/entry")
 public class EntryDao  implements InitializingBean {
     private SqlMapClientTemplate sqlMapClientTemplate;
 
     @Autowired
     private SqlMapClient sqlMapClient;
+
+    @RequestMapping(value= "/save", method= RequestMethod.POST)
+    public @ResponseBody
+    ResponseResult saveEntry(@RequestBody EntryCommand command) {
+        if (StringUtils.hasText(command.getId())) {
+            return new ResponseResult(updateEntry(command));
+        } else {
+            return new ResponseResult(addEntry(command));
+        }
+    }
 
     public String addEntry(EntryCommand command) {
         sqlMapClientTemplate.insert("entry.insertEntry", command);
@@ -35,7 +49,8 @@ public class EntryDao  implements InitializingBean {
         return  (List<EntryCommand>)sqlMapClientTemplate.queryForList("entry.getEntriesByUserIdSortByDate", userId);
     }
 
-    public List<EntryCommand> getEntriesByUserId(String userId) {
+    @RequestMapping(value= "/getEntriesByUserId/{userId}", method= RequestMethod.GET)
+    public @ResponseBody List<EntryCommand> getEntriesByUserId(@PathVariable("userId") String userId) {
         return  (List<EntryCommand>)sqlMapClientTemplate.queryForList("entry.getEntriesByUserId", userId);
     }
 
