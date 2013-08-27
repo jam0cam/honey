@@ -1,5 +1,7 @@
 package com.finance.dao;
 
+import com.common.ResponseResult;
+import com.finance.model.DeleteObject;
 import com.finance.model.Payee;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import org.springframework.beans.factory.InitializingBean;
@@ -53,13 +55,13 @@ public class PayeeDao implements InitializingBean {
 
     @RequestMapping(value= "/save", method= RequestMethod.POST)
     public @ResponseBody
-    String payeeSave(@RequestBody Payee command) {
+    ResponseResult payeeSave(@RequestBody Payee command) {
         if (!StringUtils.hasText(command.getId())) {
             addPayee(command);
         } else {
             update(command);
         }
-        return command.getId();
+        return new ResponseResult(command.getId());
     }
 
     public String addPayee(Payee command) {
@@ -67,8 +69,10 @@ public class PayeeDao implements InitializingBean {
         return command.getId();
     }
 
-    public void deletePayee(String id) {
-        sqlMapClientTemplate.delete("payee.deletePayee", id);
+    @RequestMapping(value= "/delete", method= RequestMethod.POST)
+    public @ResponseBody ResponseResult deletePayee(@RequestBody DeleteObject object) {
+        sqlMapClientTemplate.delete("payee.deletePayee", object.getId());
+        return new ResponseResult(object.getId());
     }
 
     public void update(Payee payee) {

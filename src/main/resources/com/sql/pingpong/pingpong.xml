@@ -17,10 +17,15 @@
         <result property="player1Score" column="player_one_score" />
         <result property="player2Score" column="player_two_score" />
         <result property="date" column="date" />
+        <result property="dateString" column="date" />
     </resultMap>
 
     <select id="getAllGames" resultMap="pingPong.gameMap">
         select * from game order by game_id desc;
+    </select>
+
+    <select id="getRecentGames" resultMap="pingPong.gameMap">
+        select * from game order by game_id desc limit 5;
     </select>
 
     <select id="getAllPlayers" resultMap="pingPong.playerMap">
@@ -37,5 +42,8 @@
         (player_one_id, player_two_id, player_one_score, player_two_score, date)
         values
         (#player1.id#, #player2.id#, #player1Score#, #player2Score#, #date#);
+        <selectKey resultClass="java.lang.String"  keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
 </sqlMap>

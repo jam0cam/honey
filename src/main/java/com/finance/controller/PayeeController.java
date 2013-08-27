@@ -1,6 +1,7 @@
 package com.finance.controller;
 
 import com.finance.dao.PayeeDao;
+import com.finance.model.DeleteObject;
 import com.finance.model.Payee;
 import com.common.User;
 import com.security.MyUserContext;
@@ -98,7 +99,7 @@ public class PayeeController {
     public @ResponseBody
     ModelAndView remove (@PathVariable("id") String id) {
         if (validator.isValidForDelete(id)) {
-            payeeDao.deletePayee(id);
+            payeeDao.deletePayee(new DeleteObject(id));
         }
 
         return new ModelAndView("redirect:/finance/payee");

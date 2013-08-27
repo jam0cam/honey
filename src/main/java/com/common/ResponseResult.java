@@ -8,6 +8,8 @@ package com.common;
 public class ResponseResult {
     String value;
 
+    public ResponseResult(){}
+
     public ResponseResult(String value) {
         this.value = value;
     }

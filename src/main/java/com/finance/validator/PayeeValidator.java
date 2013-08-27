@@ -32,10 +32,12 @@ public class PayeeValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Payee command = (Payee)o;
 
+        //the payee name is required.
         if (!StringUtils.hasText(command.getName())) {
             errors.rejectValue("name", "name.required");
         }
 
+        //notes length cannot exceed 120
         if (StringUtils.hasText(command.getNotes())) {
             if (command.getNotes().length() > 120) {
                 errors.rejectValue("notes", "notes.length.exceeded");
@@ -60,6 +62,7 @@ public class PayeeValidator implements Validator {
         }
 
 
+        //check this payee doesn't already exists (for new inserts)
         if (!StringUtils.hasText(command.getId())) {  //this is a new insert
             if (payeeDao.getPayeeByName(command.getName(), myUserContext.getCurrentUser().getId()) != null){
                 errors.rejectValue("name", "payee.exists");

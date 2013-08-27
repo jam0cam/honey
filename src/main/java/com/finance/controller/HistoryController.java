@@ -1,12 +1,13 @@
 package com.finance.controller;
 
+import com.common.User;
 import com.finance.dao.EntryDao;
+import com.finance.model.DeleteObject;
 import com.finance.model.EntryCommand;
 import com.finance.model.HistoryCommand;
 import com.finance.model.RowData;
-import com.common.User;
-import com.security.MyUserContext;
 import com.finance.validator.DeleteEntryValidator;
+import com.security.MyUserContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,7 +66,7 @@ public class HistoryController {
     public @ResponseBody
     ModelAndView remove (@PathVariable("id") String id) {
         if (validator.isValid(id)) {
-            entryDao.deleteEntry(id);
+            entryDao.deleteEntry(new DeleteObject(id));
         }
 
         return new ModelAndView("redirect:/finance/history");

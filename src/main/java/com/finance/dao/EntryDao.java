@@ -1,6 +1,7 @@
 package com.finance.dao;
 
 import com.common.ResponseResult;
+import com.finance.model.DeleteObject;
 import com.finance.model.EntryCommand;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import org.springframework.beans.factory.InitializingBean;
@@ -35,6 +36,14 @@ public class EntryDao  implements InitializingBean {
         }
     }
 
+    @RequestMapping(value= "/delete", method= RequestMethod.POST)
+    public @ResponseBody ResponseResult deleteEntry(@RequestBody DeleteObject object) {
+        sqlMapClientTemplate.delete("entry.deleteEntry", object.getId());
+        return new ResponseResult(object.getId());
+    }
+
+
+
     public String addEntry(EntryCommand command) {
         sqlMapClientTemplate.insert("entry.insertEntry", command);
         return command.getId();
@@ -52,10 +61,6 @@ public class EntryDao  implements InitializingBean {
     @RequestMapping(value= "/getEntriesByUserId/{userId}", method= RequestMethod.GET)
     public @ResponseBody List<EntryCommand> getEntriesByUserId(@PathVariable("userId") String userId) {
         return  (List<EntryCommand>)sqlMapClientTemplate.queryForList("entry.getEntriesByUserId", userId);
-    }
-
-    public void deleteEntry(String entryId) {
-        sqlMapClientTemplate.delete("entry.deleteEntry", entryId);
     }
 
     public EntryCommand getEntryById(String entryId) {
