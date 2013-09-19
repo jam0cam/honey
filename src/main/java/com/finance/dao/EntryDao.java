@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: jitse
@@ -53,6 +55,16 @@ public class EntryDao  implements InitializingBean {
         sqlMapClientTemplate.update("entry.updateEntry", command);
         return command.getId();
     }
+
+    @RequestMapping(value= "/getEntriesLastNMonths/{month}/userId/{userId}", method= RequestMethod.GET)
+    public @ResponseBody List<EntryCommand> getEntriesLastNMonths(@PathVariable("month") String month,
+                                                    @PathVariable("userId") String userId) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("userId", userId);
+        map.put("month", month);
+        return  (List<EntryCommand>)sqlMapClientTemplate.queryForList("entry.getEntriesLastNMonths", map);
+    }
+
 
     public List<EntryCommand> getEntriesByUserIdSortByDate(String userId) {
         return  (List<EntryCommand>)sqlMapClientTemplate.queryForList("entry.getEntriesByUserIdSortByDate", userId);

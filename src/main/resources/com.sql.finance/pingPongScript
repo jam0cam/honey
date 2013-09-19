@@ -12,6 +12,11 @@ CREATE TABLE game (
 	date date not null
 );
 
+CREATE TABLE free_lunch (
+    lunch_id int not null auto_increment primary key,
+	player_id int not null,
+	date date not null
+);
 
 INSERT INTO player (name) values ('Matt');
 INSERT INTO player (name) values ('Jia');

@@ -49,6 +49,14 @@
         order by e.date asc, p.name asc
     </select>
 
+    <select id="getEntriesLastNMonths" parameterClass="Map" resultMap="entryMap">
+        select e.*
+        from entry e
+        join payee p on p.payee_id = e.payee_id
+        where user_id = #userId# and e.date > NOW() - INTERVAL #month# MONTH
+        order by e.date desc, p.name asc
+    </select>
+
     <select id="getEntryById" parameterClass="String" resultMap="entryMap">
         select *
         from entry

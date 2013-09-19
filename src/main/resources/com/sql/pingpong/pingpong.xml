@@ -20,6 +20,11 @@
         <result property="dateString" column="date" />
     </resultMap>
 
+    <resultMap id="lunchMap" class="com.pingpong.Lunch">
+        <result property="player" column="player_id" select="pingPong.getPlayerById" />
+        <result property="date" column="date" />
+    </resultMap>
+
     <select id="getAllGames" resultMap="pingPong.gameMap">
         select * from game order by game_id desc;
     </select>
@@ -35,6 +40,10 @@
     <select id="getPlayerById" parameterClass="String" resultMap="pingPong.playerMap">
         select * from player
         where player_id = #id#
+    </select>
+
+    <select id="getAllLunches" resultMap="pingPong.lunchMap">
+        select * from free_lunch
     </select>
 
     <insert id="insertGame" parameterClass="com.pingpong.Game">
