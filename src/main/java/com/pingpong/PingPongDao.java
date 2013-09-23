@@ -89,7 +89,7 @@ public class PingPongDao implements InitializingBean {
                 p2 = l.getPlayer();
             }
 
-            if (l.getPlayer().getId().equals(p1)){rval.setP1Lunches(rval.getP1Lunches()+1);}
+            if (l.getPlayer().getId().equals(p1.getId())){rval.setP1Lunches(rval.getP1Lunches()+1);}
             else {rval.setP2Lunches(rval.getP2Lunches()+1);}
         }
 

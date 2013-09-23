@@ -93,14 +93,14 @@ public class FinanceStatsController {
             return new GraphData();
         }
         
-        List<String> monthList = getMonthList(entries);
+        List<String> monthList = Util.getMonthList(entries);
 
         AxisData axisData = new AxisData();
         axisData.setData(monthList);
 
         Series series = new Series();
         series.setName("Monthly Expense");
-        series.setMyData(getMonthlyTotal(entries));
+        series.setMyData(Util.getMonthlyTotal(entries));
 
         List<Series> seriesList = new ArrayList<Series>();
         seriesList.add(series);
@@ -134,58 +134,6 @@ public class FinanceStatsController {
         rval.setTitle("");
 
         return rval;
-    }
-
-
-    private List<Integer> getMonthlyTotal(List<EntryCommand> entries) {
-        List<Integer> rval = new ArrayList<Integer>();
-
-        //the data is assumed to be sorted by date.
-        int curMonth = entries.get(0).getDate().getMonth();
-        double runningSum = 0;
-        for (EntryCommand entry : entries) {
-            if (entry.getDate().getMonth() == curMonth) {
-                runningSum += Double.parseDouble(entry.getAmount());
-            } else {
-                //save the data from the previous month
-                rval.add(new Double(runningSum).intValue());
-
-                //if there are gaps in months between games, we want to fill that with 0s
-                curMonth++;
-                while (curMonth != entry.getDate().getMonth()) {
-                    rval.add(0);
-                    curMonth++;
-
-                    if (curMonth > 15) {
-                        throw new RuntimeException("Something went wrong, terminating to save itself");
-                    }
-                }
-
-                //initializing a new month
-                runningSum = Double.parseDouble(entry.getAmount());
-            }
-        }
-
-        //add the last batch onto the list
-        rval.add(new Double(runningSum).intValue());
-
-        return rval;
-    }
-
-    private List<String> getMonthList(List<EntryCommand> entries) {
-        int minMonth = 15;
-        int maxMonth = -1;
-
-        for (EntryCommand entry : entries) {
-            if (entry.getDate().getMonth() < minMonth) {
-                minMonth = entry.getDate().getMonth();
-            }
-            if (entry.getDate().getMonth() > maxMonth) {
-                maxMonth = entry.getDate().getMonth();
-            }
-        }
-
-        return Util.getMonthList(minMonth, maxMonth);
     }
 
 }

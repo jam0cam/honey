@@ -76,4 +76,67 @@ public class Util {
         entry.setAmount(entry.getAmount().trim().replace("$", ""));
         entry.setNotes(entry.getNotes().trim());
     }
+
+
+    public static List<Integer> getMonthlyTotal(List<EntryCommand> entries) {
+        List<Integer> rval = new ArrayList<Integer>();
+
+        List<Double> monthlyTotal = getMonthlyTotalAccurate(entries);
+
+        for (Double d : monthlyTotal) {
+            rval.add(d.intValue());
+        }
+        return rval;
+    }
+
+    public static List<Double> getMonthlyTotalAccurate(List<EntryCommand> entries) {
+        List<Double> rval = new ArrayList<Double>();
+
+        //the data is assumed to be sorted by date.
+        int curMonth = entries.get(0).getDate().getMonth();
+        double runningSum = 0;
+        for (EntryCommand entry : entries) {
+            if (entry.getDate().getMonth() == curMonth) {
+                runningSum += Double.parseDouble(entry.getAmount());
+            } else {
+                //save the data from the previous month
+                rval.add(runningSum);
+
+                //if there are gaps in months between games, we want to fill that with 0s
+                curMonth++;
+                while (curMonth != entry.getDate().getMonth()) {
+                    rval.add(0.00);
+                    curMonth++;
+
+                    if (curMonth > 15) {
+                        throw new RuntimeException("Something went wrong, terminating to save itself");
+                    }
+                }
+
+                //initializing a new month
+                runningSum = Double.parseDouble(entry.getAmount());
+            }
+        }
+
+        //add the last batch onto the list
+        rval.add(runningSum);
+
+        return rval;
+    }
+
+    public static List<String> getMonthList(List<EntryCommand> entries) {
+        int minMonth = 15;
+        int maxMonth = -1;
+
+        for (EntryCommand entry : entries) {
+            if (entry.getDate().getMonth() < minMonth) {
+                minMonth = entry.getDate().getMonth();
+            }
+            if (entry.getDate().getMonth() > maxMonth) {
+                maxMonth = entry.getDate().getMonth();
+            }
+        }
+
+        return Util.getMonthList(minMonth, maxMonth);
+    }
 }
