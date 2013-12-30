@@ -1,6 +1,7 @@
 package com.finance.dao;
 
 import com.common.ResponseResult;
+import com.common.Util;
 import com.finance.model.DeleteObject;
 import com.finance.model.Payee;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -46,7 +47,12 @@ public class PayeeDao implements InitializingBean {
 
     @RequestMapping(value= "/getAllPayees/userId/{userId}", method= RequestMethod.GET)
     public @ResponseBody List<Payee> getAllPayees(@PathVariable("userId") String userId) {
-        return (List<Payee>) sqlMapClientTemplate.queryForList("payee.getAllPayees", userId);
+        List<Payee> rval = (List<Payee>) sqlMapClientTemplate.queryForList("payee.getAllPayees", userId);
+
+        for (Payee p : rval) {
+            Util.assureHtpp(p);
+        }
+        return rval;
     }
 
     public List<Payee> getAllPayeesNotifyOn() {

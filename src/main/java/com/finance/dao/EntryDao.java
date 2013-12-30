@@ -149,7 +149,13 @@ public class EntryDao  implements InitializingBean {
 
     @RequestMapping(value= "/getEntriesByUserId/{userId}", method= RequestMethod.GET)
     public @ResponseBody List<EntryCommand> getEntriesByUserId(@PathVariable("userId") String userId) {
-        return  (List<EntryCommand>)sqlMapClientTemplate.queryForList("entry.getEntriesByUserId", userId);
+        List<EntryCommand> rval = (List<EntryCommand>)sqlMapClientTemplate.queryForList("entry.getEntriesByUserId", userId);
+
+        for (EntryCommand c : rval) {
+            Util.assureHtpp(c.getPayee());
+        }
+
+        return rval;
     }
 
     public EntryCommand getEntryById(String entryId) {

@@ -6,9 +6,14 @@
 <sqlMapConfig>
     <settings useStatementNamespaces="true"/>
 
+    <typeHandler javaType="com.card.AttachmentType"
+                 callback="com.card.EnumTypeHandler"/>
+
     <sqlMap resource="com/sql/common/sql.xml"/>
     <sqlMap resource="com/sql/pingpong/pingpong.xml"/>
+    <sqlMap resource="com/sql/card/card.xml"/>
     <sqlMap resource="com.sql.finance/payee.xml"/>
     <sqlMap resource="com.sql.finance/entry.xml"/>
     <sqlMap resource="com.sql.finance/notify.xml"/>
+
 </sqlMapConfig>

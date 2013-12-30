@@ -15,6 +15,7 @@
     <context:component-scan base-package="com.common" />
     <context:component-scan base-package="com.taichi" />
     <context:component-scan base-package="com.coupon" />
+    <context:component-scan base-package="com.card" />
 
     <mvc:annotation-driven />
     <task:annotation-driven scheduler="myScheduler"/>
@@ -29,6 +30,21 @@
     <bean id="mailSender" class="com.postageapp.MailSender">
         <property name="from" value="${from.email}"/>
         <property name="apiKey" value="${api.key}"/>
+    </bean>
+
+    <bean id="s3Service" class="com.aws.S3Service">
+        <property name="awsCredentials" ref="awsCredentials"/>
+    </bean>
+
+    <bean id="awsCredentials" class="com.aws.AwsCredentials">
+        <property name="accessKey" value="${access.key}"/>
+        <property name="secretKey" value="${secret.key}"/>
+        <property name="s3Endpoint" value="${s3.endpoint}"/>
+        <property name="bucketName" value="${s3.bucket.name}"/>
+    </bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="300000"/><!-- Max size in bytes. -->
     </bean>
 
     <bean id="dateFormatter" class="java.text.SimpleDateFormat">
@@ -58,6 +74,16 @@
             <list>
                 <value type="org.codehaus.jackson.map.DeserializationConfig.Feature">FAIL_ON_UNKNOWN_PROPERTIES</value>
                 <value>false</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="propertyPlaceholderConfigurer"
+               class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:default-config.properties</value>
+                <!--<value>file:/Users/jitse/.spring/honey.properties</value>-->
             </list>
         </property>
     </bean>

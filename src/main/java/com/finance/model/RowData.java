@@ -10,16 +10,29 @@ import java.io.Serializable;
 public class RowData implements Serializable {
     private String id;
     private String name;
+    private String url;
     private String month1;
     private String month2;
     private String month3;
+    private String month4;
+
     private String toolTip1;
     private String toolTip2;
     private String toolTip3;
+    private String toolTip4;
 
     private String entryId1;
     private String entryId2;
     private String entryId3;
+    private String entryId4;
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 
     public String getEntryId1() {
         return entryId1;
@@ -107,5 +120,29 @@ public class RowData implements Serializable {
 
     public void setToolTip3(String toolTip3) {
         this.toolTip3 = toolTip3;
+    }
+
+    public String getMonth4() {
+        return month4;
+    }
+
+    public void setMonth4(String month4) {
+        this.month4 = month4;
+    }
+
+    public String getToolTip4() {
+        return toolTip4;
+    }
+
+    public void setToolTip4(String toolTip4) {
+        this.toolTip4 = toolTip4;
+    }
+
+    public String getEntryId4() {
+        return entryId4;
+    }
+
+    public void setEntryId4(String entryId4) {
+        this.entryId4 = entryId4;
     }
 }

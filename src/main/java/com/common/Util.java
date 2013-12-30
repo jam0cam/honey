@@ -2,6 +2,7 @@ package com.common;
 
 import com.finance.model.EntryCommand;
 import com.finance.model.Payee;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class Util {
             return "Sep";
         } else if (i == 10) {
             return "Oct";
-        } else if (i == 11) {
+        } else if (i == 11 || i == -1) {
             return "Nov";
         } else if (i == 12 || i == 0) {
             return "Dec";
@@ -138,5 +139,15 @@ public class Util {
         }
 
         return Util.getMonthList(minMonth, maxMonth);
+    }
+
+    /**
+     * Makes sure that the url (if any) isn't just www. It'll have http://www....
+     * @param payee
+     */
+    public static void assureHtpp(Payee payee) {
+        if (StringUtils.hasText(payee.getUrl()) && payee.getUrl().startsWith("www.")){
+                payee.setUrl("http://" + payee.getUrl());
+        }
     }
 }

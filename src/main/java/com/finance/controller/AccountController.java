@@ -63,6 +63,7 @@ public class AccountController {
             data.setMonth1(Util.getMonthName(today.getMonth() + 2));
             data.setMonth2(Util.getMonthName(today.getMonth() + 1));
             data.setMonth3(Util.getMonthName(today.getMonth()));
+            data.setMonth4(Util.getMonthName(today.getMonth() - 1));
             command.getRowTitles().add(data);
 
             String currentPayeeId = "0";
@@ -94,6 +95,7 @@ public class AccountController {
             if (payeeId.equals(entry.getPayee().getId())){
                 if (row.getName() == null) {
                     row.setName(entry.getPayee().getName());
+                    row.setUrl(entry.getPayee().getUrl());
                 }
                 if (Util.getMonthName(today.getMonth()+2).equals(Util.getMonthName(entry.getDate().getMonth()+1))) {
                     row.setToolTip1(formatter.format(entry.getDate()));
@@ -107,6 +109,10 @@ public class AccountController {
                     row.setToolTip3(formatter.format(entry.getDate()));
                     row.setMonth3("$" + entry.getAmount());
                     row.setEntryId3(entry.getId());
+                } else if (Util.getMonthName(today.getMonth()-1).equals(Util.getMonthName(entry.getDate().getMonth()+1))) {
+                    row.setToolTip4(formatter.format(entry.getDate()));
+                    row.setMonth4("$" + entry.getAmount());
+                    row.setEntryId4(entry.getId());
                 }
             }
         }

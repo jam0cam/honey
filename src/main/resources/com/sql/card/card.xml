@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="card">
+
+
+    <resultMap id="attachmentMap" class="com.card.Attachment">
+        <result property="id" column="attachment_id" />
+        <result property="imageUrl" column="image_url" />
+        <result property="parentId" column="parent_id" />
+        <result property="type" column="type" typeHandler="com.card.EnumTypeHandler" />
+    </resultMap>
+
+    <resultMap id="couponMap" class="com.card.Coupon">
+        <result property="userId" column="user_id" />
+        <result property="id" column="coupon_id" />
+        <result property="company" column="company" />
+        <result property="expiration" column="expiration_date" />
+        <result property="images" column="coupon_id" select="card.getAttachmentByParentId"/>
+    </resultMap>
+
+    <select id="getCouponByUserId" parameterClass="String" resultMap="card.couponMap">
+        select * from coupon where user_id = #userId#
+    </select>
+
+    <select id="getAttachmentByParentId" parameterClass="String" resultMap="card.attachmentMap">
+        select * from attachment where parent_id = #id#
+    </select>
+
+    <insert id="insertCoupon" parameterClass="com.card.Coupon">
+        INSERT into coupon
+        (user_id, company, expiration_date, created_date)
+        values
+        (#userId#, #company#, #expiration#, now())
+    </insert>
+
+    <insert id="insertAttachment" parameterClass="com.card.Attachment">
+        INSERT into attachment
+        (parent_id, type, image_url)
+        values
+        (#parentId#, #type.value#, #imageUrl#)
+    </insert>
+
+</sqlMap>
